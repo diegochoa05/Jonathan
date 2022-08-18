@@ -8,33 +8,80 @@
         Canvas
     </title>
     <style type = "text/css">
-        /* canvas{
+        canvas{
             background-color: rgb(138, 138, 209);
-        }    */
+        }   
     </style>
 </head>
 <body>
-    <canvas id="mycanvas" width="1000" height="1000">
+    <canvas id="mycanvas" width="500" height="500">
         Hola tu navegador no funciona
     </canvas>
+
+    <img id="imagen" src="doncine.jpeg" style="display:none;">
 
     <script>
         var canvas = document.getElementById('mycanvas');
         var ctx = canvas.getContext('2d');
 
-        ctx.fillStyle = "rgb(200, 0, 0)";
-        ctx.fillRect(10, 10, 55, 50);
+        //Texto
+        // ctx.font = "30px Arial";
+        // ctx.fillText("Diego Alejandro", 130, 50);
+        // ctx.strokeText("Ochoa Duarte", 130, 80);
 
-        ctx.fillStyle = "rgb(0,0,200)";
-        ctx.fillRect(50, 50, 55, 50);
+        //Gradiante
 
-        ctx.fillStyle = "rgb(255,0, 126, 0.5)";
-        ctx.fillRect(95, 90, 55, 50);
+        // var grd = ctx.createLinearGradient(0, 0, 600, 0);
+        // grd.addColorStop(0, "blue");
+        // grd.addColorStop(1, "orange");
+        
+        // grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+        // grd.addColorStop(0, "blue");
+        // grd.addColorStop(1, "orange");
+
+        // ctx.fillStyle = grd;
+        // ctx.fillRect(10, 10, 160, 80);
+
+        // var img = document.getElementById('imagen');
+        // ctx.drawImage(img, 50, 50, 100, 100);
+
+        canvas.addEventListener('click', function(e){
+
+            console.log(e);
+
+            ctx.beginPath();
+            ctx.strokeStyle = "black";
+            ctx.fillStyle = "rgba(" + r + "," + g + "," + b +", 0.5)";
+            ctx.arc(e.offsetX-25, e.offsetY-25, 50, 0, 2* Math.PI);
+            ctx.fill();
+            ctx.stroke();
+         }
+        )
+
+        canvas.addEventListener('mouseover', function(e){
+            r = Math.floor(Math.random() * (255 - 0) + 1);
+            g = Math.floor(Math.random() * (255 - 0) + 1);
+            b = Math.floor(Math.random() * (255 - 0) + 1);
+        
+        })
+        
+
+
+
+        // ctx.fillStyle = "rgb(200, 0, 0)";
+        // ctx.fillRect(10, 10, 55, 50);
+
+        // ctx.fillStyle = "rgb(0,0,200)";
+        // ctx.fillRect(50, 50, 55, 50);
+
+        // ctx.fillStyle = "rgb(255,0, 126, 0.5)";
+        // ctx.fillRect(95, 90, 55, 50);
 
         // ctx.moveTo(100, 30);
         // ctx.lineTo(300,200);
         // ctx.stroke();
 
+        //figura
         // ctx.moveTo(100,150);
         // ctx.lineTo(50, 50);
         // ctx.lineTo(200, 150);
@@ -44,15 +91,17 @@
         // ctx.fillStyle = "red";
         // ctx.fill();
 
-        ctx.beginPath();
-        ctx.arc(250, 250, 100, 0, 2* Math.PI);
-        ctx.fill();
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.arc(250, 250, 100, 0, 2* Math.PI);
+        // ctx.fill();
+        // ctx.stroke();
 
-        ctx.beginPath();
-        ctx.arc(500, 260, 100, 0, 2* Math.PI);
-        ctx.strokeStyle = "white";
-        ctx.stroke();
+        // ctx.beginPath();
+        // ctx.arc(500, 260, 100, 0, 2* Math.PI);
+        // ctx.strokeStyle = "white";
+        // ctx.stroke();
+
+
 
         
     </script>
