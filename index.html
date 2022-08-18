@@ -9,7 +9,7 @@
     </title>
     <style type = "text/css">
         canvas{
-            background-color: rgb(138, 138, 209);
+            
         }   
     </style>
 </head>
@@ -23,8 +23,11 @@
     <script>
         var canvas = document.getElementById('mycanvas');
         var ctx = canvas.getContext('2d');
+        var fig = "arc";
+        var press = false;
+        var super_x = 0, super_y= 0;
 
-        //Texto
+        //Textoo
         // ctx.font = "30px Arial";
         // ctx.fillText("Diego Alejandro", 130, 50);
         // ctx.strokeText("Ochoa Duarte", 130, 80);
@@ -45,26 +48,62 @@
         // var img = document.getElementById('imagen');
         // ctx.drawImage(img, 50, 50, 100, 100);
 
-        canvas.addEventListener('click', function(e){
+        // canvas.addEventListener('click', function(e){
 
-            console.log(e);
+        //     console.log(e);
 
-            ctx.beginPath();
-            ctx.strokeStyle = "black";
-            ctx.fillStyle = "rgba(" + r + "," + g + "," + b +", 0.5)";
-            ctx.arc(e.offsetX-25, e.offsetY-25, 50, 0, 2* Math.PI);
-            ctx.fill();
-            ctx.stroke();
-         }
-        )
+        //     ctx.fillStyle = "rgba(" + r + "," + g + "," + b +", 0.5)";
+        //     ctx.beginPath();
 
-        canvas.addEventListener('mouseover', function(e){
-            r = Math.floor(Math.random() * (255 - 0) + 1);
-            g = Math.floor(Math.random() * (255 - 0) + 1);
-            b = Math.floor(Math.random() * (255 - 0) + 1);
+        //     if (fig == 'arc'){
+                
+        //         ctx.strokeStyle = "black";
+        //         ctx.arc(e.offsetX-25, e.offsetY-25, 50, 0, 2* Math.PI);
+              
+        //     } else {
+            
+        //         ctx.fillRect(e.offsetX-25, e.offsetY-25, 30, 30);
+        //         ctx.strokeRect(e.offsetX-25, e.offsetY-25, 30, 30);
+
+        //     }
+
+        //     ctx.stroke();
+        //     ctx.fill();
+        //  }
+        // )
+
+        // canvas.addEventListener('mousemove', function(e){
+        //     console.log(e);
+
+        //     if (press){
+        //         ctx.fillRect(e.offsetX-25, e.offsetY-25, 5, 5);
+        //         ctx.fillStyle = "black";
+        //     }
+        // })
+
+        // canvas.addEventListener('mouseout', function(e){
+            
+        //     console.log(e);
+
+
+        //     fig = (fig == 'arc') ? 'rec':'arc';
+
+        // })
+
+        // canvas.addEventListener('mouseover', function(e){
+        //     r = Math.floor(Math.random() * (255 - 0) + 1);
+        //     g = Math.floor(Math.random() * (255 - 0) + 1);
+        //     b = Math.floor(Math.random() * (255 - 0) + 1);
         
-        })
+        // })
         
+        // canvas.addEventListener('mousedown', function(e){
+        //     press = true;
+        // })
+
+        // canvas.addEventListener('mouseup', function(e){
+        //     press = false;
+        // })
 
 
 
@@ -101,7 +140,36 @@
         // ctx.strokeStyle = "white";
         // ctx.stroke();
 
+        document.addEventListener('keydown', function(e){
+            console.log(e);
 
+            if (e.keyCode == 87 || e.keyCode == 38) {
+                super_y -= 5;
+            }
+
+            if (e.keyCode == 83 || e.keyCode == 40) {
+                super_y += 5;
+            }
+
+            if (e.keyCode == 65 || e.keyCode == 37) {
+                super_x -= 5;
+            }
+
+            if (e.keyCode == 68 || e.keyCode == 39) {
+                super_x += 5;
+            }
+            
+            paint();
+
+        })
+
+        function paint(){
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 500, 500);
+            ctx.fillStyle = "red";
+            ctx.fillRect(super_x, super_y, 40, 40);
+            ctx.strokeRect(super_x, super_y, 40, 40);
+        }
 
         
     </script>
