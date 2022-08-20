@@ -14,11 +14,11 @@
     </style>
 </head>
 <body>
-    <canvas id="mycanvas" width="500" height="500">
+    <canvas id="mycanvas" width="2200" height="2200">
         Hola tu navegador no funciona
     </canvas>
 
-    <img id="imagen" src="doncine.jpeg" style="display:none;">
+    <img id="imagen" src="balon.png" style="display:none;">
 
     <script>
         var canvas = document.getElementById('mycanvas');
@@ -27,10 +27,7 @@
         var press = false;
         var super_x = 0, super_y= 0;
 
-        //Textoo
-        // ctx.font = "30px Arial";
-        // ctx.fillText("Diego Alejandro", 130, 50);
-        // ctx.strokeText("Ochoa Duarte", 130, 80);
+
 
         //Gradiante
 
@@ -105,14 +102,6 @@
         //     press = false;
         // })
 
-
-
-        // ctx.fillStyle = "rgb(200, 0, 0)";
-        // ctx.fillRect(10, 10, 55, 50);
-
-        // ctx.fillStyle = "rgb(0,0,200)";
-        // ctx.fillRect(50, 50, 55, 50);
-
         // ctx.fillStyle = "rgb(255,0, 126, 0.5)";
         // ctx.fillRect(95, 90, 55, 50);
 
@@ -130,46 +119,150 @@
         // ctx.fillStyle = "red";
         // ctx.fill();
 
-        // ctx.beginPath();
-        // ctx.arc(250, 250, 100, 0, 2* Math.PI);
-        // ctx.fill();
-        // ctx.stroke();
+        // cabeza
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(177, 120, 84)";
+        ctx.fillStroke = "black";
+        ctx.arc(390, 150, 100, 0, 2* Math.PI);
+        ctx.stroke();
+        ctx.fill();
 
-        // ctx.beginPath();
-        // ctx.arc(500, 260, 100, 0, 2* Math.PI);
-        // ctx.strokeStyle = "white";
-        // ctx.stroke();
+        // cabello
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillStroke = "black";
+        ctx.arc(390, 150, 100, 10, 1.84* Math.PI);
+        ctx.stroke();
+        ctx.fill();
 
-        document.addEventListener('keydown', function(e){
-            console.log(e);
+        // ojos
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillStroke = "black";
+        ctx.arc(355, 150, 15, 0, 2* Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillStroke = "black";
+        ctx.arc(415, 150, 15, 0, 2* Math.PI);
+        ctx.stroke();
+        ctx.fill();
 
-            if (e.keyCode == 87 || e.keyCode == 38) {
-                super_y -= 5;
-            }
+        // playera
+        ctx.fillStyle = "rgb(200, 0, 0)";
+        ctx.fillRect(310, 250, 175, 420);
+     
+        // short
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "rgb(200, 0, 0)";
+        ctx.fillRect(310, 670.70, 85, 100);
+        ctx.stroke();
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "rgb(200, 0, 0)";
+        ctx.fillRect(400, 670.70, 85, 100);
+        ctx.stroke();
 
-            if (e.keyCode == 83 || e.keyCode == 40) {
-                super_y += 5;
-            }
+        // boca
+        ctx.fillStyle = "black";
+        ctx.fillRect(360, 200, 50, 2);
+        ctx.fill();
 
-            if (e.keyCode == 65 || e.keyCode == 37) {
-                super_x -= 5;
-            }
+        // piernas
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "rgb(177, 120, 84)";
+        ctx.fillRect(310, 770.70, 85, 170);
+        ctx.stroke();
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "rgb(177, 120, 84)";
+        ctx.fillRect(400, 770.70, 85, 170);
+        ctx.stroke();
 
-            if (e.keyCode == 68 || e.keyCode == 39) {
-                super_x += 5;
-            }
-            
-            paint();
+        // zapatos
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "black";
+        ctx.fillRect(290, 920.70, 105, 30);
+        ctx.stroke();
+        ctx.strokeStyle = "black";
+        ctx.fillStyle = "black";
+        ctx.fillRect(380, 920.70, 105, 30);
+        ctx.stroke();
 
-        })
+        // pupilas
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(171, 56, 34)";
+        ctx.fillStroke = "black";
+        ctx.arc(408, 150, 8, 0, 2* Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = "rgb(171, 56, 34)";
+        ctx.fillStroke = "black";
+        ctx.arc(348, 150, 8, 0, 2* Math.PI);
+        ctx.stroke();
+        ctx.fill();
 
-        function paint(){
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, 500, 500);
-            ctx.fillStyle = "red";
-            ctx.fillRect(super_x, super_y, 40, 40);
-            ctx.strokeRect(super_x, super_y, 40, 40);
-        }
+        // Numero y equipo
+        ctx.font = "30px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText("BULLS", 350, 300);
+        ctx.fillText("11", 440, 740);
+        
+        // brazos 
+        ctx.fillStyle= "rgb(177, 120, 84)";
+        ctx.beginPath();
+        ctx.lineTo(310, 280);
+        ctx.lineTo(215, 550);
+        ctx.lineTo(275, 570);
+        ctx.lineTo(310, 440);
+        ctx.fill();
+        ctx.fillStyle= "rgb(177, 120, 84)";
+        ctx.beginPath();
+        ctx.lineTo(485, 300);
+        ctx.lineTo(215, 550);
+        ctx.lineTo(275, 590);
+        ctx.lineTo(310, 600);
+        ctx.fill();
+
+        // balon
+        ctx.beginPath();
+        ctx.fillStyle = "orange";
+        ctx.fillStroke = "black";
+        ctx.arc(250, 600, 70, 0, 2* Math.PI);
+        ctx.stroke();
+        ctx.fill();
+
+
+        // document.addEventListener('keydown', function(e){
+        //     console.log(e);
+
+        //     if (e.keyCode == 87 || e.keyCode == 38) {
+        //         super_y -= 5;
+        //     }
+
+        //     if (e.keyCode == 83 || e.keyCode == 40) {
+        //         super_y += 5;
+        //     }
+
+        //     if (e.keyCode == 65 || e.keyCode == 37) {
+        //         super_x -= 5;
+        //     }
+
+        //     if (e.keyCode == 68 || e.keyCode == 39) {
+        //         super_x += 5;
+        //     }
+                
+        //     paint();
+
+        // })
+
+        // function paint(){
+        //     ctx.fillStyle = "white";
+        //     ctx.fillRect(0, 0, 500, 500);
+        //     ctx.fillStyle = "red";
+        //     ctx.fillRect(super_x, super_y, 40, 40);
+        //     ctx.strokeRect(super_x, super_y, 40, 40);
+        // }
 
         
     </script>
