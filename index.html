@@ -29,7 +29,7 @@
         var player2 = null;
         var direccion = 'derecha';
         var score = 10;
-        var speed = 0;
+        var speed = 2;
 
         function run (){
             canvas = document.getElementById('mycanvas');
@@ -58,7 +58,7 @@
 
         function update(){
 
-            if (direccion == "arriba") {
+            if (direccion == 'arriba') {
                 player1.y -= speed;
 
                 if (player1.y<0){
@@ -66,7 +66,7 @@
                 }
             }
 
-            if (direccion == "abajo") {
+            if (direccion == 'abajo') {
                 player1.y += speed;
 
                 if (player1.y>500){
@@ -74,24 +74,18 @@
                 }
             }
 
-            if (direccion == "izquierda") {
+            if (direccion == 'izquierda') {
                 player1.x += speed;
                 if (player1.x<0){
                     player1.x = 500;
                 }
             }
 
-            if (direccion == "derecha") {
+            if (direccion == 'derecha') {
                 player1.x += speed;
                 if (player1.x>500){
                     player1.x = 0;
                 }
-            }
-
-
-            player1.x+=10;
-            if (player1.x>500){
-                player1.x = 0;
             }
             
             if (player1.se_tocan(player2)) {
@@ -141,8 +135,8 @@
 
             this.se_tocan = function (target) { 
 
-            if(this.x < target.x + target.width &&
-            this.x + this.width > target.x && 
+            if(this.x < target.x + target.w &&
+            this.x + this.w > target.x && 
             this.y < target.y + target.h && 
             this.y + this.h > target.y){
             return true;	
