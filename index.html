@@ -27,9 +27,11 @@
         var super_x = 100, super_y= 225;
         var player1 = null;
         var player2 = null;
+        var pared = [4];
         var direccion = 'derecha';
         var score = 10;
         var speed = 2;
+        var pause = false;
 
         function run (){
             canvas = document.getElementById('mycanvas');
@@ -37,7 +39,13 @@
 
             player1 = new Cuadro(250, 250, 40, 40, "red");
 
-            player2 = new Cuadro(getRandomInt(500), getRandomInt(500), 40, 40, "yellow")
+            player2 = new Cuadro(getRandomInt(500), getRandomInt(500), 40, 40, "yellow");
+
+            pared[0] = new Cuadro(50, 150, 40, 200, "green");
+            pared[1] = new Cuadro(400, 150, 40, 200, "green");
+            pared[2] = new Cuadro(100, 80, 300, 40, "green");
+            pared[3] = new Cuadro(100, 400, 300, 40, "green");
+
 
             paint();
         }
@@ -51,8 +59,19 @@
 
             player1.pintar(ctx);
             player2.pintar(ctx);
+            for (var i = 0;i<pared.length; i++){
+                pared[i].pintar(ctx);
+            }
 
-            update();
+            if (pause){
+                ctx.fillStyle = "rgb(0,0,0,0.5";
+                ctx.fillRect(0,0, 500, 500); 
+
+                ctx.fillStyle = "white";
+                ctx.fillText("PAUSA", 225,225)
+            }else{
+                update();
+            }
     
         }
 
@@ -75,7 +94,7 @@
             }
 
             if (direccion == 'izquierda') {
-                player1.x += speed;
+                player1.x -= speed;
                 if (player1.x<0){
                     player1.x = 500;
                 }
@@ -93,8 +112,26 @@
                 player2.y = getRandomInt(500);
 
                 score+= 10;
-                speed+=5;
+                speed+=1;
             }
+
+            for (var i = 0; i<pared.length; i++){
+                if (player1.se_tocan(pared[i])){
+                if (direccion == "arriba"){
+                    player1.y += speed;
+                }
+                if (direccion == "abajo"){
+                    player1.y -= speed;
+                }
+                if (direccion == "izquierda"){
+                    player1.x += speed;
+                }
+                if (direccion == "derecha"){
+                    player1.x -= speed;
+                }
+            }
+            }
+           
 
         }
 
@@ -170,6 +207,10 @@
             if (e.keyCode == 68 || e.keyCode == 39) {
                 // super_x += 5;
                 direccion = 'derecha';
+            }
+            
+            if (e.keyCode == 32){
+                pause = (pause) ? false:true;
             }
         })
 
