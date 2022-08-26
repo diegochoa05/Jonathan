@@ -32,6 +32,9 @@
         var score = 10;
         var speed = 2;
         var pause = false;
+        var soldado = new Image();
+        var coin = new Image(); 
+        var mario = new Audio();   
 
         function run (){
             canvas = document.getElementById('mycanvas');
@@ -46,6 +49,9 @@
             pared[2] = new Cuadro(100, 80, 300, 40, "green");
             pared[3] = new Cuadro(100, 400, 300, 40, "green");
 
+            soldado.src = "soldado.png";
+            coin.src = "coin.png";
+            mario.src = "mario-coin.mp3";
 
             paint();
         }
@@ -57,8 +63,15 @@
             ctx.fillStyle = randomColor();
             ctx.fillRect(0, 0, 500, 500);
 
-            player1.pintar(ctx);
-            player2.pintar(ctx);
+            //player1.pintar(ctx);
+
+            ctx.drawImage(soldado, player1.x, player1.y);
+
+            //player2.pintar(ctx);
+            
+            ctx.drawImage(coin, player2.x, player2.y);
+
+
             for (var i = 0;i<pared.length; i++){
                 pared[i].pintar(ctx);
             }
@@ -113,6 +126,8 @@
 
                 score+= 10;
                 speed+=1;
+
+                mario.play();
             }
 
             for (var i = 0; i<pared.length; i++){
